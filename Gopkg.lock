@@ -22,11 +22,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:78f0fad332d097c69524fa0d9e347882a9a5ddbed453761dadf200c55af136c6"
+  digest = "1:6be70c86c12eb09e0971d7825e194f0e069fdc4ca9fdcc696cf622b499ddcb10"
   name = "github.com/naiktanmai/go-docker-dev"
   packages = ["src/features/todo"]
   pruneopts = "UT"
-  revision = "0f88c6c021b640dea7f03890fa4e17ef63e14e75"
+  revision = "bf3a76800ea85545de9ab96d3524b22decf207ee"
 
 [solve-meta]
   analyzer-name = "dep"

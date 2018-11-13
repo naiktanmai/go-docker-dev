@@ -23,7 +23,7 @@ func GetATodo(w http.ResponseWriter, r *http.Request) {
 	todoID := chi.URLParam(r, "todoID")
 	todos := Todo{
 		slug: todoID,
-		Title: "Hello world".
+		Title: "Hello world",
 		Body: "Hellooooo"
 	}
 	render.JSON(w, r, todos)
