@@ -8,5 +8,12 @@ services:
       dockerfile: Dockerfile_debug
     volumes:
       - "./:/go/src/app"
+    links:
+      - mongo
     ports:
       - 8080:8080
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017

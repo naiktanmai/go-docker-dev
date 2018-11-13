@@ -1,6 +1,7 @@
 package todo
 
 import (
+	"app/src/internal/config"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -13,19 +14,21 @@ type Todo struct {
 	Body  string `json: "body"`
 }
 
-func Routes() *chi.Mux {
+func Routes(configuration *config.Config) *chi.Mux {
 	router := chi.NewRouter()
-	router.Get("/{todoID}", GetATodo)
+	router.Get("/{todoID}", GetATodo(configuration))
 
 	return router
 }
 
-func GetATodo(w http.ResponseWriter, r *http.Request) {
-	todoID := chi.URLParam(r, "todoID")
-	todos := Todo{
-		Slug:  todoID,
-		Title: "Hello world",
-		Body:  "Helloooooooo",
+func GetATodo(configuration *config.Config) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		todoID := chi.URLParam(r, "todoID")
+		todos := Todo{
+			Slug:  todoID,
+			Title: "Hello world" + configuration.Constants.PORT,
+			Body:  "Helloooooooo",
+		}
+		render.JSON(w, r, todos)
 	}
-	render.JSON(w, r, todos)
 }

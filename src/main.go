@@ -2,6 +2,7 @@ package main
 
 import (
 	"app/src/features/todo"
+	"app/src/internal/config"
 	"log"
 	"net/http"
 
@@ -10,7 +11,7 @@ import (
 	"github.com/go-chi/render"
 )
 
-func Routes() *chi.Mux {
+func Routes(configuration *config.Config) *chi.Mux {
 	router := chi.NewRouter()
 
 	router.Use(
@@ -22,14 +23,19 @@ func Routes() *chi.Mux {
 	)
 
 	router.Route("/v1", func(r chi.Router) {
-		r.Mount("/api/todo", todo.Routes())
+		r.Mount("/api/todo", todo.Routes(configuration))
 	})
 
 	return router
 }
 
 func main() {
-	router := Routes()
+	configuration, err := config.New()
+	if err != nil {
+		log.Panicln("Configuration error", err)
+	}
+
+	router := Routes(configuration)
 	walkFunc := func(method string, route string, handler http.Handler, middlewares ...func(http.Handler) http.Handler) error {
 		log.Printf("%s %s\n", method, route)
 		return nil
