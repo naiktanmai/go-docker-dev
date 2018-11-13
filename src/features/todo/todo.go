@@ -23,7 +23,7 @@ func Routes() *chi.Mux {
 func GetATodo(w http.ResponseWriter, r *http.Request) {
 	todoID := chi.URLParam(r, "todoID")
 	todos := Todo{
-		slug:  todoID,
+		Slug:  todoID,
 		Title: "Hello world",
 		Body:  "Hellooooo",
 	}
