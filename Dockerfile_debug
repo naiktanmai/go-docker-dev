@@ -1,0 +1,12 @@
+
+#build stage
+FROM golang:alpine AS builder
+WORKDIR /go/src/app
+COPY . .
+RUN apk add --no-cache git ca-certificates
+RUN go get github.com/codegangsta/gin && go get -d -v ./src && go install -v ./src
+RUN ls && echo $GOPATH
+LABEL Name=go-docker-dev Version=0.0.1
+EXPOSE 8080
+ENTRYPOINT [ "gin", "--path", "src", "--port", "8080", "run", "main.go" ]
+CMD ["go", "run", "src/main.go"]

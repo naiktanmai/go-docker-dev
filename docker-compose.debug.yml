@@ -1,0 +1,12 @@
+version: "2.1"
+
+services:
+  go-docker-dev:
+    image: go-docker-dev
+    build:
+      context: .
+      dockerfile: Dockerfile_debug
+    volumes:
+      - "./:/go/src/app"
+    ports:
+      - 8080:8080

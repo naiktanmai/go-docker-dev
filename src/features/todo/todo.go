@@ -25,7 +25,7 @@ func GetATodo(w http.ResponseWriter, r *http.Request) {
 	todos := Todo{
 		Slug:  todoID,
 		Title: "Hello world",
-		Body:  "Hellooooo",
+		Body:  "Helloooooooo",
 	}
 	render.JSON(w, r, todos)
 }
