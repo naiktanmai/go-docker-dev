@@ -20,6 +20,14 @@
   revision = "3215478343fbc559bd3fc08f7031bb134d6bdad5"
   version = "v1.0.1"
 
+[[projects]]
+  branch = "master"
+  digest = "1:3c4d3edf2cf6297810726f661c1425441d5664db9d1ade597880db05bd59cefb"
+  name = "github.com/naiktanmai/go-docker-dev"
+  packages = ["src/features/todo"]
+  pruneopts = "UT"
+  revision = "0d1f6d67a0ea787ac7419d4bea066e202cffd702"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -27,6 +35,7 @@
     "github.com/go-chi/chi",
     "github.com/go-chi/chi/middleware",
     "github.com/go-chi/render",
+    "github.com/naiktanmai/go-docker-dev/src/features/todo",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
